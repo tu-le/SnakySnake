@@ -69,6 +69,19 @@ public class Snake {
     public void setBody(ArrayList<Point> body) {
         this.body = body;
     }
+    
+    public Point getTail(){
+        return body.get(body.size() - 1);
+    }
+    
+    public boolean selfHitTest(){
+        for (int i = 1; i < body.size(); i++) {
+            if (body.get(i).equals(getHead())){
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * @return the direction
@@ -103,6 +116,10 @@ public class Snake {
      */
     public void addGrowthcounter(int growthcounter) {
         this.growthcounter += growthcounter;
+    }
+
+    void grow(int i) {
+        
     }
     
 }
