@@ -187,10 +187,12 @@ class SnakeEnvironment extends Environment {
         if (gameState == GameState.ENDED) {
             graphics.setColor(Color.red);
             graphics.setFont(new Font("Calibri", Font.ITALIC, 100));
-            graphics.drawString("Game Over!", 500, 500);
+            graphics.drawString("Game Over!", 300, 300);
         }
     }
-
+    
+ 
+    
     private void checkSnakeIntersection() {
         //If the snake location is the same as any apple location.
         //Then grow the snake and remove the apple.
@@ -201,12 +203,22 @@ class SnakeEnvironment extends Environment {
                 this.snake.addGrowthcounter(moveCounter);
                 System.out.println("Apple Chomp!!!!");
                 this.apples.get(i).setLocation(getRandomGridLocation());
+                this.setScore(this.getScore() + 50);
 //                this.snake.get(i).setLocation(getRandomGridLocation());
             }
         }
+    }
+    
+       public int getScore() {
+        return score;
+    }
+   
+    public void setScore(int newScore) {
+        this.score = newScore;
     }
 
     private Point getRandomGridLocation() {
         return new Point((int) (Math.random() * this.grid.getColumns()), (int) (Math.random() * this.grid.getRows()));
     }
+
 }
